@@ -1,5 +1,6 @@
 package com.example.experimentalsnake
 
+import android.R.attr.contentDescription
 import android.R.attr.maxHeight
 import android.R.attr.maxWidth
 import android.R.attr.onClick
@@ -21,13 +22,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.experimentalsnake.ui.theme.ExperimentalSnakeTheme
@@ -93,42 +98,57 @@ fun Quadro(modifier: Modifier = Modifier) {
     }
 }
 @Composable
-fun Botoes(modifier: Modifier = Modifier){
+fun Botoes(modifier: Modifier = Modifier) {
 
     val mudaTamanhoBotao = Modifier.size(64.dp)
-    Column(horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(24.dp)) {
-            Button(onClick = { /*TODO*/ },
-                modifier = mudaTamanhoBotao,
-                shape = RoundedCornerShape(16.dp)
-                ) {
-                Text(text = "Cima")
-            }
-            Row {
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = mudaTamanhoBotao,
-                    shape = RoundedCornerShape(16.dp)
-                ) {
-                    Text(text = "Esquerda")
-                }
-                Spacer(modifier = Modifier.padding(16.dp))
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = mudaTamanhoBotao,
-                    shape = RoundedCornerShape(16.dp)
-                ) {
-                    Text(text = "Direita")
-                }
-            }
-            Button(onClick = { /*TODO*/ },
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(24.dp)
+    ) {
+        Button(
+            onClick = { /*TODO*/ },
+            modifier = mudaTamanhoBotao,
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Icon(
+                imageVector = ImageVector.vectorResource(id = R.drawable.seta_cima),
+                contentDescription = "cima"
+            )
+        }
+        Row {
+            Button(
+                onClick = { /*TODO*/ },
                 modifier = mudaTamanhoBotao,
                 shape = RoundedCornerShape(16.dp)
             ) {
-                Text(text = "Baixo")
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.seta_esquerda),
+                    contentDescription = "esquerda"
+                )
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = mudaTamanhoBotao,
+                shape = RoundedCornerShape(16.dp)
+            ) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.seta_direita),
+                    contentDescription = "direita"
+                )
             }
         }
-
+    }
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = mudaTamanhoBotao,
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Icon(
+            imageVector = ImageVector.vectorResource(id = R.drawable.seta_baixo),
+            contentDescription = "baixo"
+        )
+    }
 }
 
 @Preview(showBackground = true)
