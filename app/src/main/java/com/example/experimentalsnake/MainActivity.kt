@@ -36,6 +36,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.experimentalsnake.ui.theme.ExperimentalSnakeTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -149,6 +154,13 @@ fun Botoes(modifier: Modifier = Modifier) {
             contentDescription = "baixo"
         )
     }
+}
+
+data class EstadoJogo(val food:Pair <Int,Int>,val snake:List<Pair<Int,Int>>)
+class Game(private val scope: CoroutineScope) {
+    private val mutex: Mutex = Mutex()
+    private val mutableState: MutableStateFlow<EstadoJogo> =
+        MutableStateFlow(EstadoJogo(food = Pair(5, 5), snake = listOf(Pair(7, 7))))
 }
 
 @Preview(showBackground = true)
